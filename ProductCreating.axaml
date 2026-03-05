@@ -1,0 +1,225 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="700"
+        x:Class="Practica1.ProductCreating"
+        Title="Создание товара"
+        Width="800"
+        Height="700"
+        MinWidth="800"
+        MinHeight="700"
+        Background="#FFFFFF"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Margin="0,0,0,30">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Image Grid.Column="0" 
+                   Width="40" 
+                   Height="40" 
+                   Source="/Assets/Icon.ico"
+                   Stretch="Uniform"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Center"/>
+
+            <TextBlock Grid.Column="1" 
+                       Text="Создание товара" 
+                       FontSize="24" 
+                       FontWeight="Bold"
+                       HorizontalAlignment="Center" 
+                       VerticalAlignment="Center"
+                       Margin="-30,0,0,0"/>
+        </Grid>
+
+        <ScrollViewer Grid.Row="1" Margin="0,0,0,20">
+            <StackPanel Spacing="15">
+                
+                <StackPanel Spacing="10">
+                    <TextBlock Text="Фото товара:" FontSize="14" FontWeight="SemiBold"/>
+                    
+                    <Grid ColumnDefinitions="Auto, *">
+                        <Border Grid.Column="0"
+                                x:Name="ImageBorder"
+                                Background="#F0F0F0"
+                                CornerRadius="5"
+                                Width="150"
+                                Height="150"
+                                BorderBrush="#CCCCCC"
+                                BorderThickness="1"
+                                HorizontalAlignment="Left">
+                            <Image x:Name="ProductImage"
+                                   Source="/Assets/picture.png"
+                                   Stretch="Uniform"
+                                   Width="140"
+                                   Height="140"/>
+                        </Border>
+                        
+                        <StackPanel Grid.Column="1" 
+                                    VerticalAlignment="Center" 
+                                    Margin="20,0,0,0">
+                            <Button x:Name="SelectImageButton"
+                                    Content="Выбрать изображение"
+                                    Width="200"
+                                    Height="40"
+                                    Background="#00FA9A"
+                                    BorderThickness="0"
+                                    CornerRadius="5"
+                                    Click="OnSelectImageClick"/>
+                            <TextBlock x:Name="ImageFileNameText"
+                                       Text="Файл не выбран"
+                                       FontSize="12"
+                                       Foreground="#666666"
+                                       Margin="0,5,0,0"/>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+
+                <StackPanel Spacing="5">
+                    <TextBlock Text="Артикул (articl):" FontSize="14" FontWeight="SemiBold"/>
+                    <TextBox x:Name="ArticlTextBox"
+                             Width="400"
+                             Height="35"
+                             Padding="10,5"
+                             CornerRadius="5"
+                             Background="#7FFF00"
+                             Watermark="Введите артикул"/>
+                </StackPanel>
+
+                <StackPanel Spacing="5">
+                    <TextBlock Text="Наименование товара:" FontSize="14" FontWeight="SemiBold"/>
+                    <ComboBox x:Name="TitleComboBox"
+                              Width="400"
+                              Height="35"
+                              CornerRadius="5"
+                              Background="White"
+                              PlaceholderText="Выберите наименование"/>
+                </StackPanel>
+
+                <StackPanel Spacing="5">
+                    <TextBlock Text="Категория товара:" FontSize="14" FontWeight="SemiBold"/>
+                    <ComboBox x:Name="CategoryComboBox"
+                              Width="400"
+                              Height="35"
+                              CornerRadius="5"
+                              Background="White"
+                              PlaceholderText="Выберите категорию"/>
+                </StackPanel>
+
+                <StackPanel Spacing="5">
+                    <TextBlock Text="Описание товара:" FontSize="14" FontWeight="SemiBold"/>
+                    <TextBox x:Name="DescriptionTextBox"
+                             Width="400"
+                             Height="80"
+                             Padding="10,5"
+                             CornerRadius="5"
+                             Background="#7FFF00"
+                             Watermark="Введите описание"
+                             AcceptsReturn="True"
+                             TextWrapping="Wrap"/>
+                </StackPanel>
+
+                <StackPanel Spacing="5">
+                    <TextBlock Text="Производитель:" FontSize="14" FontWeight="SemiBold"/>
+                    <ComboBox x:Name="ManufacturerComboBox"
+                              Width="400"
+                              Height="35"
+                              CornerRadius="5"
+                              Background="White"
+                              PlaceholderText="Выберите производителя"/>
+                </StackPanel>
+
+                <StackPanel Spacing="5">
+                    <TextBlock Text="Поставщик:" FontSize="14" FontWeight="SemiBold"/>
+                    <ComboBox x:Name="SupplierComboBox"
+                              Width="400"
+                              Height="35"
+                              CornerRadius="5"
+                              Background="White"
+                              PlaceholderText="Выберите поставщика"/>
+                </StackPanel>
+
+                <StackPanel Spacing="5">
+                    <TextBlock Text="Цена:" FontSize="14" FontWeight="SemiBold"/>
+                    <TextBox x:Name="PriceTextBox"
+                             Width="200"
+                             Height="35"
+                             Padding="10,5"
+                             CornerRadius="5"
+                             Background="#7FFF00"
+                             Watermark="0.00"
+                             TextChanged="OnPriceTextChanged"/>
+                </StackPanel>
+
+                <StackPanel Spacing="5">
+                    <TextBlock Text="Единица измерения:" FontSize="14" FontWeight="SemiBold"/>
+                    <TextBox x:Name="UnitTextBox"
+                             Width="200"
+                             Height="35"
+                             Padding="10,5"
+                             CornerRadius="5"
+                             Background="#7FFF00"
+                             Watermark="шт, кг и т.д."/>
+                </StackPanel>
+
+                <StackPanel Spacing="5">
+                    <TextBlock Text="Количество на складе:" FontSize="14" FontWeight="SemiBold"/>
+                    <TextBox x:Name="QuantityTextBox"
+                             Width="200"
+                             Height="35"
+                             Padding="10,5"
+                             CornerRadius="5"
+                             Background="#7FFF00"
+                             Watermark="0"
+                             TextChanged="OnQuantityTextChanged"/>
+                </StackPanel>
+
+                <StackPanel Spacing="5">
+                    <TextBlock Text="Действующая скидка (%):" FontSize="14" FontWeight="SemiBold"/>
+                    <TextBox x:Name="DiscountTextBox"
+                             Width="200"
+                             Height="35"
+                             Padding="10,5"
+                             CornerRadius="5"
+                             Background="#7FFF00"
+                             Watermark="0"/>
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+
+        <Grid Grid.Row="2" ColumnDefinitions="Auto, *, Auto">
+
+            <Button Grid.Column="0" 
+                    x:Name="BackButton"
+                    Content="Назад"
+                    Width="100"
+                    Height="40"
+                    HorizontalAlignment="Left"
+                    Background="#00FA9A"
+                    BorderThickness="0"
+                    CornerRadius="5"
+                    Click="OnBackButtonClick"/>
+            
+            <Button Grid.Column="2" 
+                    x:Name="SaveButton"
+                    Content="Сохранить"
+                    Width="100"
+                    Height="40"
+                    HorizontalAlignment="Right"
+                    Background="#00FA9A"
+                    BorderThickness="0"
+                    CornerRadius="5"
+                    Click="OnSaveButtonClick"/>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,132 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="600"
+        x:Class="Practica1.CreateOrders"
+        Title="Создание заказа"
+        Width="800"
+        Height="600"
+        MinWidth="800"
+        MinHeight="600"
+        Background="#FFFFFF"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Margin="0,0,0,20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Image Grid.Column="0" 
+                   Width="40" 
+                   Height="40" 
+                   Source="/Assets/Icon.ico"
+                   Stretch="Uniform"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Center"/>
+
+            <TextBlock Grid.Column="1" 
+                       Text="Создание заказа" 
+                       FontSize="24" 
+                       FontWeight="Bold"
+                       HorizontalAlignment="Center" 
+                       VerticalAlignment="Center"
+                       Margin="-30,0,0,0"/>
+        </Grid>
+
+        <ScrollViewer Grid.Row="1" Margin="0,0,0,20">
+            <StackPanel Spacing="15">
+                
+                <StackPanel Spacing="10">
+                    <TextBlock Text="Товары в заказе:" FontSize="16" FontWeight="Bold"/>
+                    
+                    <Grid ColumnDefinitions="2*, 1*, 100, 120, 60" Margin="5,0">
+                        <TextBlock Grid.Column="0" Text="Название" FontWeight="SemiBold" Foreground="#666666"/>
+                        <TextBlock Grid.Column="1" Text="Артикул" FontWeight="SemiBold" Foreground="#666666"/>
+                        <TextBlock Grid.Column="2" Text="Цена" FontWeight="SemiBold" Foreground="#666666" HorizontalAlignment="Right"/>
+                        <TextBlock Grid.Column="3" Text="Количество" FontWeight="SemiBold" Foreground="#666666" HorizontalAlignment="Center"/>
+                        <TextBlock Grid.Column="4" Text="Выбор" FontWeight="SemiBold" Foreground="#666666" HorizontalAlignment="Center"/>
+                    </Grid>
+                    
+                    <ListBox x:Name="ProductsListBox"
+                             Background="Transparent"
+                             BorderThickness="0"
+                             Height="250"
+                             Margin="0,0,0,10">
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Spacing="5"/>
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                    </ListBox>
+                </StackPanel>
+
+                <StackPanel Spacing="5">
+                    <TextBlock Text="Статус заказа:" FontSize="14" FontWeight="SemiBold"/>
+                    <ComboBox x:Name="StatusComboBox"
+                              Width="300"
+                              Height="35"
+                              CornerRadius="5"
+                              Background="White"
+                              PlaceholderText="Выберите статус"/>
+                </StackPanel>
+
+                <StackPanel Spacing="5">
+                    <TextBlock Text="Адрес пункта выдачи:" FontSize="14" FontWeight="SemiBold"/>
+                    <ComboBox x:Name="PickUpPointComboBox"
+                              Width="400"
+                              Height="35"
+                              CornerRadius="5"
+                              Background="White"
+                              PlaceholderText="Выберите пункт выдачи"/>
+                </StackPanel>
+
+                <StackPanel Spacing="5">
+                    <TextBlock Text="Дата заказа:" FontSize="14" FontWeight="SemiBold"/>
+                    <DatePicker x:Name="OrderDatePicker"
+                                Width="200"
+                                Height="35"/>
+                </StackPanel>
+
+                <StackPanel Spacing="5">
+                    <TextBlock Text="Дата выдачи:" FontSize="14" FontWeight="SemiBold"/>
+                    <DatePicker x:Name="DeliveryDatePicker"
+                                Width="200"
+                                Height="35"/>
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+
+        <Grid Grid.Row="2" ColumnDefinitions="Auto, *, Auto, Auto" Margin="0,0,0,0">
+            <Button Grid.Column="0" 
+                    x:Name="BackButton"
+                    Content="Назад"
+                    Width="100"
+                    Height="40"
+                    HorizontalAlignment="Left"
+                    Background="#00FA9A"
+                    BorderThickness="0"
+                    CornerRadius="5"
+                    Click="OnBackButtonClick"/>
+            
+            <Button Grid.Column="3" 
+                    x:Name="CreateButton"
+                    Content="Создать"
+                    Width="100"
+                    Height="40"
+                    HorizontalAlignment="Right"
+                    Background="#00FA9A"
+                    BorderThickness="0"
+                    CornerRadius="5"
+                    Click="OnCreateButtonClick"/>
+        </Grid>
+    </Grid>
+</Window>

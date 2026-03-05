@@ -1,0 +1,105 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="450" d:DesignHeight="450"
+        x:Class="Practica1.MainWindow"
+        Title="Practica1"
+        Height="450"
+        Width="450"
+        MaxHeight="450"
+        MinWidth="450"
+        MinHeight="450"
+        MaxWidth="450"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/> 
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Margin="0,0,0,30">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Image Grid.Column="0" 
+                   Width="40" 
+                   Height="40" 
+                   Source="/Assets/Icon.ico"
+                   Stretch="Uniform"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Center"/>
+
+            <TextBlock Grid.Column="1" 
+                       Text="Авторизация" 
+                       FontSize="24" 
+                       FontWeight="Bold"
+                       HorizontalAlignment="Center" 
+                       VerticalAlignment="Center"
+                       Margin="-30,0,0,0"/>
+        </Grid>
+
+        <StackPanel Grid.Row="1" Spacing="15" Margin="0,0,0,20">
+            <TextBlock Text="Логин" 
+                       FontSize="14" 
+                       FontWeight="SemiBold"
+                       HorizontalAlignment="Center"/>
+            <TextBox x:Name="LoginTextBox"
+                     Background="#7FFF00" 
+                     Height="35" 
+                     Padding="10,5"
+                     CornerRadius="5"/>
+
+            <TextBlock Text="Пароль" 
+                       FontSize="14" 
+                       FontWeight="SemiBold" 
+                       Margin="0,5,0,0"
+                       HorizontalAlignment="Center"/>
+            <TextBox x:Name="PasswordTextBox"
+                     Background="#7FFF00" 
+                     Height="35" 
+                     Padding="10,5"
+                     CornerRadius="5"
+                     PasswordChar="•"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" 
+                    Spacing="10" 
+                    VerticalAlignment="Bottom" 
+                    HorizontalAlignment="Center"
+                    Width="300">
+
+            <Button x:Name="LoginButton"
+                    Background="#00FA9A" 
+                    Height="40" 
+                    CornerRadius="5"
+                    HorizontalAlignment="Stretch"
+                    Click="OnLoginButtonClick">
+                <TextBlock Text="Войти" 
+                           FontSize="16" 
+                           FontWeight="Bold" 
+                           Foreground="Black"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"/>
+            </Button>
+
+            <Button x:Name="GuestButton"
+                    Background="#00FA9A" 
+                    Height="40" 
+                    CornerRadius="5"
+                    HorizontalAlignment="Stretch"
+                    Click="OnGuestButtonClick">
+                <TextBlock Text="Войти как гость" 
+                           FontSize="16" 
+                           FontWeight="Bold" 
+                           Foreground="Black"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"/>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Window>

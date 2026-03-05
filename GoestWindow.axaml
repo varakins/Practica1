@@ -1,0 +1,68 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="600"
+        x:Class="Practica1.GoestWindow"
+        Title="Просмотр товаров"
+        Width="800"
+        Height="600"
+        MinWidth="800"
+        MinHeight="600"
+        Background="#FFFFFF"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Margin="0,0,0,20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Image Grid.Column="0" 
+                   Width="40" 
+                   Height="40" 
+                   Source="/Assets/Icon.ico"
+                   Stretch="Uniform"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Center"/>
+
+            <TextBlock Grid.Column="1" 
+                       Text="Просмотр товаров" 
+                       FontSize="24" 
+                       FontWeight="Bold"
+                       HorizontalAlignment="Center" 
+                       VerticalAlignment="Center"
+                       Margin="-30,0,0,0"/>
+        </Grid>
+
+        <ListBox Grid.Row="1"
+                 x:Name="ProductsListBox"
+                 Background="Transparent"
+                 BorderThickness="0"
+                 ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Spacing="10"/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+        </ListBox>
+
+        <Button Grid.Row="2" 
+                x:Name="BackButton"
+                Content="Назад"
+                Width="100"
+                Height="40"
+                HorizontalAlignment="Left"
+                Background="#00FA9A"
+                BorderThickness="0"
+                CornerRadius="5"
+                Click="OnBackButtonClick"/>
+    </Grid>
+</Window>
